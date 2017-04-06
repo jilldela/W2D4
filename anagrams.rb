@@ -1,6 +1,6 @@
 
 # O(n!)
-# arr of arrays. just one constant variable
+# arr of arrays. O(n!) space
 def first_anagram?(word1, word2)
   word1_perms = word1.chars.permutation.to_a
 
@@ -13,6 +13,7 @@ end
 # print first_anagram?("gizmo", "sally")
 
 # quadradic O(n^2)
+# space constant O(1)
 # nothing new. uses two strings given
 def second_anagram?(word1, word2)
   word1.each_char do |char1|
@@ -32,6 +33,7 @@ end
 
 # quick sort uses linearithmic O(n log n)
 # two arrays created for sorts
+# quicksort space complexity
 def third_anagram?(word1, word2)
   word1.chars.sort == word2.chars.sort
 end
@@ -53,10 +55,19 @@ def fourth_anagram?(word1, word2)
   word1_count == word2_count
 end
 
-print fourth_anagram?("elvis", "lives")
+# print fourth_anagram?("elvis", "lives")
+# 0(n) space/time
+def fifth_anagram?(word1, word2)
+  word_count = Hash.new(0)
+  word1.each_char do |char1|
+    word_count[char1] += 1
+  end
 
-# def fifth_anagram?(word1, word2)
-#   Hash.new { |hash, key| hash[key] =  }
-#
-#
-# end
+  word2.each_char do |char2|
+    word_count[char2] -= 1
+  end
+
+  word_count.values.all?(&:zero?)
+end
+
+# print fifth_anagram?("elvis", "lives")
