@@ -13,34 +13,36 @@ end
 # arr = [0, 1, 5, 7]
 # p bad_two_sum?(arr, 6)
 
+# TODO Firgure out sorted solution
+
+# def okay_two_sum?(array, target)
+#   finish = array.length - 1
 #
-def okay_two_sum?(array, target)
-  two_sum_hash = {}
-
-  array.each do |el|
-    two_sum_hash[el] = true
-  end
-
-  array.each do |el|
-    num = target - el
-    return true if two_sum_hash[num]
-  end
-  false
-end
+#   array.each_index do |idx|
+#     diff1 = target - array[idx]
+#     diff2 = target - array[finish]
+#
+#     diff1 > array[finish]
+#
+#     diff2 > array[idx]
+#
+#     finish -= 1
+#   end
+# end
 
 # arr = [0, 1, 5, 7]
 # p okay_two_sum?(arr, 6)
 
 def two_sum?(array, target)
-  two_sum_hash = {}
+  two_sum_hash = {} #O(1)
 
-  sorted.each do |el|
+  array.each do |el| #O(n)
     two_sum_hash[el] = true
   end
 
-  sorted.each do |el|
+  array.each do |el|  #O(n)
     num = target - el
-    return true if two_sum_hash[num]
+    return true if two_sum_hash[num] #O(1)
   end
   false
 end
